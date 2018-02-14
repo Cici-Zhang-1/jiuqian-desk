@@ -1,0 +1,12 @@
+var onShowHtml = "$data$";
+var onFocusHtml = "$data$";
+var onErrorHtml = "<span style='color: red;'>$data$</span>";
+var onCorrectHtml = "<span style='color: green;'>$data$</span>";
+var onShowClass = "";
+var onFocusClass = "";
+var onErrorClass = "";
+var onCorrectClass = "";
+//var onShowHtml = "<div class='$class$'>$data$</div>";
+//var onFocusHtml = "<div class='$class$'>$data$</div>";
+//var onErrorHtml = "<div class='$class$'>$data$</div>";
+//var onCorrectHtml = "<div class='$class$'>$data$</div>";
