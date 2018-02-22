@@ -15,29 +15,33 @@ class Base_Model extends MY_Model
 {
 	public $HostDb;
 	public $CompanyDb;
-	public function __construct($Second = false)
+
+    protected $Module;
+    protected $Model;
+    protected $Item;
+    protected $Cache;
+
+    protected $_Element;
+
+	// public function __construct($Second = false, $Module = '', $Model = '')
+	public function __construct($Module = '', $Model = '')
 	{
 		parent::__construct();
+        log_message('debug', 'Model Base_Model Start');
+		$this->Module = $Module;
+		$this->Model = $Model;
+		$this->_init();
+
 		$this->HostDb = $this->load->database('default', TRUE);
-		if($Second){
-			$this->com_connect();
-		}
-		/**
-		 * 开启缓存
-		 */
-		$this->e_cache->open_cache();
-		log_message('debug', 'Model Base_Model Start');
+		$this->e_cache->open_cache();   // 开启缓存
 	}
-	
-	public function com_connect(){
-		$Database = $this->session->userdata('database');
-		log_message('debug', 'Model Base_Model Start Second on!'.$Database);
-		if(!empty($Database) && $Database !== 'default'){
-			$this->CompanyDb = $this->load->database($Database, TRUE);
-		}else{
-			redirect(site_url('sign/out'));
-		}
-	}
+	private function _init() {
+        $this->Module = str_replace("\\", "/", $this->Module);
+        $this->Module = substr($this->Module, strrpos($this->Module, '/')+1);
+        $this->Model = strtolower($this->Model);
+        $this->Item = $this->Module.'/'.$this->Model.'/';
+        $this->Cache = str_replace('/', '_', $this->Item);
+    }
 	
 	public function remove_cache($File, $Reg = true){
 	    $this->load->helper('file');
@@ -47,16 +51,26 @@ class Base_Model extends MY_Model
 	        delete_cache_files($File);
 	    }
 	}
+
+	public function set_element($E) {
+	    $this->_Element = $E;
+    }
 	
 	protected function _unformat_as($Item, $File){
 	    $this->config->load('dbview/'.$File);
 	    $Dbview = $this->config->item($Item);
 	    $Return = array();
-	    foreach ($Dbview as $key => $value){
-	        $Return[] = $key.' as '.$value;
-	    }
+	    if (isset($this->_Element)) {
+	        $Dbview = array_filter($Dbview, function($val) {
+	           return in_array($val, $this->_Element);
+            });
+        }
+        foreach ($Dbview as $key => $value){
+            $Return[] = $key.' as '.$value;
+        }
 	    return implode(',', $Return);
 	}
+
 	protected function _unformat($Data, $Item, $File){
 	    $this->config->load('dbview/'.$File);
 	    $Dbview = $this->config->item($Item);
@@ -68,6 +82,34 @@ class Base_Model extends MY_Model
 	    }
 	    return $Return;
 	}
+
+    /**
+     * 数据表
+     * @param $Data
+     * @param $File
+     * @return array
+     */
+	protected function _untable_as($Data, $File) {
+	    $this->config->load('tables/' . $File);
+	    $Table = $this->config->item('tables/' . $File);
+	    $Table = array_flip($Table);
+	    $Return = array();
+	    foreach ($Data as $key => $value) {
+	        $Return[$Table[$key]] = $value;
+        }
+        return $Return;
+    }
+
+    protected function _string_untable_as($Data, $File) {
+        $this->config->load('tables/' . $File);
+        $Table = $this->config->item('tables/' . $File);
+        $Table = array_flip($Table);
+        $Return = array();
+        foreach ($Data as $key => $value) {
+            $Return[$key] = $Table[$value] . ' as ' . $value;
+        }
+        return implode(',', $Return);
+    }
 	
 	protected function _format($Data, $Item, $File){
 	    $this->config->load('formview/'. $File);

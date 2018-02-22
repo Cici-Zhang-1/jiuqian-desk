@@ -63,6 +63,29 @@ function gh_location($_string,$_url){
 	}
 }
 
+/**
+ * FUNCTION: Visit Return
+ * @param $Code
+ * @param string $Message
+ * @param string $Location
+ * @param array $Data
+ */
+function gh_return($Code, $Message = '', $Location = '', $Data = array()) {
+    if (preg_match('/json/', $_SERVER['HTTP_ACCEPT'])) {
+        exit(json_encode(array(
+            'error' => $Code,
+            'message' => $Message,
+            'data' => $Data,
+            'location' => $Location
+        )));
+    }else {
+        if ($Code > EXIT_SUCCESS) {
+            show_error($Message);
+        }else {
+            exit();
+        }
+    }
+}
 
 /**
  * 输出格式和字符集
@@ -244,13 +267,19 @@ function gh_js_decode($MParam1){
  * @param unknown $Name
  * @return mixed|string
  */
-function name_to_id($Name){
+function name_to_id($Name, $First = false){
 	if(is_string($Name)){
-		return preg_replace('/\s/','',gh_lcfirst(ucwords(preg_replace('/_/', ' ', $Name))));
+	    if ($First) {
+            return preg_replace('/\s/','',ucwords(preg_replace('/_/', ' ', $Name)));
+        }else {
+            return preg_replace('/\s/','',gh_lcfirst(ucwords(preg_replace('/_/', ' ', $Name))));
+        }
 	}else{
 		return '';
 	}
 }
+
+
 
 /**
  * 定长字符串换行

@@ -84,6 +84,9 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
+defined('EXIT_SIGNIN')         OR define('EXIT_SIGNIN', 10); // signin error
+defined('EXIT_PERMISSION')     OR define('EXIT_PERMISSION', 11); // 访问许可错误
+
 
 /**
  * DAY
@@ -103,6 +106,9 @@ define('DAYS', 86400);
 define('WEEKS', 604800);
 define('MONTHS', 2592000);
 define('YEARS', 31536000);
+
+defined('VIEW_EXPIRED')         OR define('VIEW_EXPIRED', MINUTES);
+defined('FILE_FORCE_EXPIRED')   OR define('FILE_FORCE_EXPIRED', false);
 
 define('CLIENT_MULTI_RESULTS', 131072);
 

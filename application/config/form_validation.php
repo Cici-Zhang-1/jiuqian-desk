@@ -2527,11 +2527,16 @@ $config = array(
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/card/add' => array(
+        'permission/card/add' => array(
             array(
                 'field' => 'name',
                 'label' => '名称',
                 'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'url',
+                'label' => 'Url',
+                'rules' => 'trim|max_length[128]'
             ),
             array(
                 'field' => 'card_type',
@@ -2544,7 +2549,7 @@ $config = array(
                 'rules' => 'trim|max_length[32]'
             )
         ),
-        'priviledge/card/edit' => array(
+        'permission/card/edit' => array(
             array(
                 'field' => 'selected',
                 'label' => '卡片编号',
@@ -2556,6 +2561,11 @@ $config = array(
                 'rules' => 'trim|required|min_length[1]|max_length[64]'
             ),
             array(
+                'field' => 'url',
+                'label' => 'Url',
+                'rules' => 'trim|max_length[128]'
+            ),
+            array(
                 'field' => 'card_type',
                 'label' => '卡片类型',
                 'rules' => 'trim|required|min_length[1]|max_length[32]'
@@ -2566,14 +2576,14 @@ $config = array(
                 'rules' => 'trim|max_length[32]'
             )
         ),
-        'priviledge/card/remove' => array(
+        'permission/card/remove' => array(
             array(
                 'field' => 'selected[]',
                 'label' => '卡片编号',
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/element/add' => array(
+        'permission/element/add' => array(
             array(
                 'field' => 'name',
                 'label' => '名称',
@@ -2590,7 +2600,7 @@ $config = array(
                 'rules' => 'trim|max_length[64]'
             )
         ),
-        'priviledge/element/edit' => array(
+        'permission/element/edit' => array(
             array(
                 'field' => 'selected',
                 'label' => '卡片编号',
@@ -2612,14 +2622,14 @@ $config = array(
                 'rules' => 'trim|max_length[64]'
             )
         ),
-        'priviledge/element/remove' => array(
+        'permission/element/remove' => array(
             array(
                 'field' => 'selected[]',
                 'label' => '卡片编号',
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/form/add' => array(
+        'permission/form/add' => array(
             array(
                 'field' => 'name',
                 'label' => '名称',
@@ -2631,7 +2641,7 @@ $config = array(
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/form/edit' => array(
+        'permission/form/edit' => array(
             array(
                 'field' => 'selected',
                 'label' => '表单编号',
@@ -2648,14 +2658,14 @@ $config = array(
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/form/remove' => array(
+        'permission/form/remove' => array(
             array(
                 'field' => 'selected[]',
                 'label' => '表单编号',
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/func/add' => array(
+        'permission/func/add' => array(
             array(
                 'field' => 'name',
                 'label' => '名称',
@@ -2707,7 +2717,7 @@ $config = array(
                 'rules' => 'trim|numeric|max_length[1]'
             )
         ),
-        'priviledge/func/edit' => array(
+        'permission/func/edit' => array(
             array(
                 'field' => 'selected',
                 'label' => '功能编号',
@@ -2764,14 +2774,14 @@ $config = array(
                 'rules' => 'trim|numeric|max_length[1]'
             )
         ),
-        'priviledge/func/remove' => array(
+        'permission/func/remove' => array(
             array(
                 'field' => 'selected[]',
                 'label' => '功能编号',
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/menu/add' => array(
+        'permission/menu/add' => array(
             array(
                 'field' => 'name',
                 'label' => '名称',
@@ -2798,7 +2808,7 @@ $config = array(
                 'rules' => 'trim|min_length[0]|max_length[128]'
             )
         ),
-        'priviledge/menu/edit' => array(
+        'permission/menu/edit' => array(
             array(
                 'field' => 'selected',
                 'label' => '菜单编号',
@@ -2830,21 +2840,67 @@ $config = array(
                 'rules' => 'trim|min_length[0]|max_length[128]|gh_str_replace'
             )
         ),
-        'priviledge/menu/remove' => array(
+        'permission/menu/remove' => array(
             array(
                 'field' => 'selected[]',
                 'label' => '菜单编号',
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/role/add' => array(
+        'permission/page_search/add' => array(
+            array(
+                'field' => 'name',
+                'label' => '名称',
+                'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'label',
+                'label' => 'Label',
+                'rules' => 'trim|max_length[64]'
+            ),
+            array(
+                'field' => 'mid',
+                'label' => '菜单',
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
+            )
+        ),
+        'permission/page_search/edit' => array(
+            array(
+                'field' => 'selected',
+                'label' => '页面搜索编号',
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'mid',
+                'label' => '菜单',
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'name',
+                'label' => '名称',
+                'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'label',
+                'label' => 'Label',
+                'rules' => 'trim|max_length[64]'
+            )
+        ),
+        'permission/page_search/remove' => array(
+            array(
+                'field' => 'selected[]',
+                'label' => '页面搜索编号',
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
+            )
+        ),
+        'permission/role/add' => array(
             array(
                 'field' => 'name',
                 'label' => '角色名称',
                 'rules' => 'trim|required|min_length[1]|max_length[64]'
             )
         ),
-        'priviledge/role/edit' => array(
+        'permission/role/edit' => array(
             array(
                 'field' => 'selected',
                 'label' => '角色编号',
@@ -2856,14 +2912,14 @@ $config = array(
                 'rules' => 'trim|min_length[1]|max_length[64]'
             )
         ),
-        'priviledge/role/remove' => array(
+        'permission/role/remove' => array(
             array(
                 'field' => 'selected[]',
                 'label' => '角色编号',
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/role_card/edit' => array(
+        'permission/role_card/edit' => array(
             array(
                 'field' => 'rid',
                 'label' => '角色',
@@ -2875,7 +2931,7 @@ $config = array(
                 'rules' => 'trim|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/role_element/edit' => array(
+        'permission/role_element/edit' => array(
             array(
                 'field' => 'rid',
                 'label' => '角色',
@@ -2887,7 +2943,7 @@ $config = array(
                 'rules' => 'trim|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/role_form/edit' => array(
+        'permission/role_form/edit' => array(
             array(
                 'field' => 'rid',
                 'label' => '角色',
@@ -2899,7 +2955,7 @@ $config = array(
                 'rules' => 'trim|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/role_func/edit' => array(
+        'permission/role_func/edit' => array(
             array(
                 'field' => 'rid',
                 'label' => '角色',
@@ -2911,7 +2967,7 @@ $config = array(
                 'rules' => 'trim|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/role_menu/edit' => array(
+        'permission/role_menu/edit' => array(
             array(
                 'field' => 'rid',
                 'label' => '角色',
@@ -2923,7 +2979,31 @@ $config = array(
                 'rules' => 'trim|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/usergroup/add' => array(
+        'permission/role_page_search/edit' => array(
+            array(
+                'field' => 'rid',
+                'label' => '角色',
+                'rules' => 'trim|required|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'psid[]',
+                'label' => '页面搜索权限',
+                'rules' => 'trim|min_length[1]|max_length[4]'
+            )
+        ),
+        'permission/role_visit/edit' => array(
+            array(
+                'field' => 'rid',
+                'label' => '角色',
+                'rules' => 'trim|required|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'vid[]',
+                'label' => '访问控制权限',
+                'rules' => 'trim|min_length[1]|max_length[4]'
+            )
+        ),
+        'permission/usergroup/add' => array(
             array(
                 'field' => 'name',
                 'label' => '名称',
@@ -2940,7 +3020,7 @@ $config = array(
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/usergroup/edit' => array(
+        'permission/usergroup/edit' => array(
             array(
                 'field' => 'selected',
                 'label' => '用户组编号',
@@ -2962,14 +3042,14 @@ $config = array(
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/usergroup/remove' => array(
+        'permission/usergroup/remove' => array(
             array(
                 'field' => 'selected[]',
                 'label' => '选择项',
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[10]'
             )
         ),
-        'priviledge/usergroup_role/add' => array(
+        'permission/usergroup_role/add' => array(
             array(
                 'field' => 'uid',
                 'label' => '用户组',
@@ -2981,7 +3061,7 @@ $config = array(
                 'rules' => 'trim|required|min_length[1]|max_length[4]'
             )
         ),
-        'priviledge/usergroup_role/edit' => array(
+        'permission/usergroup_role/edit' => array(
             array(
                 'field' => 'uid',
                 'label' => '用户组',
@@ -2991,6 +3071,52 @@ $config = array(
                 'field' => 'rid[]',
                 'label' => '用户角色',
                 'rules' => 'trim|min_length[1]|max_length[4]'
+            )
+        ),
+        'permission/visit/add' => array(
+            array(
+                'field' => 'name',
+                'label' => '访问控制名称',
+                'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'controller',
+                'label' => '访问控制控制器',
+                'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'url',
+                'label' => 'Url',
+                'rules' => 'trim|required|min_length[1]|max_length[128]'
+            )
+        ),
+        'permission/visit/edit' => array(
+            array(
+                'field' => 'selected',
+                'label' => '访问控制编号',
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'name',
+                'label' => '访问控制名称',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'controller',
+                'label' => '访问控制控制器',
+                'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'url',
+                'label' => 'Url',
+                'rules' => 'trim|required|min_length[1]|max_length[128]'
+            )
+        ),
+        'permission/visit/remove' => array(
+            array(
+                'field' => 'selected[]',
+                'label' => '访问控制编号',
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
         'product/board/add' => array(

@@ -36,9 +36,18 @@ class Order extends CWDMS_Controller{
 			$View = '_'.$View;
 			$this->$View();
 		}else{
-			$Item = $this->_Item.$View;
-			$Data['action'] = site_url($Item);
-			$this->load->view($Item, $Data);
+			$Item = $this->_Item.$View . $this->session->userdata('ugid');
+			if (!file_exists(VIEWPATH . $Item . '.php') || file_expired(VIEWPATH . $Item . '.php', VIEW_EXPIRED)) {
+                $this->load->library('permission');
+                $Data['Func'] = $this->permission->get_allowed_func('name');
+                $Data['Form'] = $this->permission->get_allowed_form('name');
+                $Data['PageSearch'] = $this->permission->get_allowed_page_search('name');
+                $Data['Card'] = $this->permission->get_allowed_card('name');
+                $Data['Element'] = $this->permission->get_allowed_element('name');
+                $this->load->library('template');
+                $this->template->generate($Item, $Data);
+            }
+            $this->load->view($Item);
 		}
 	}
 	
@@ -47,6 +56,11 @@ class Order extends CWDMS_Controller{
         $this->Search = $this->get_page_conditions($Cookie, $this->Search);
 		$Data = array();
 		if(!empty($this->Search)){
+		    $this->load->library('permission');
+		    if (!!($E = $this->permission->get_element_by_operation())) {
+                $this->order_model->set_element($E);
+            }
+
 		    if(!!($Data = $this->order_model->select_order($this->Search))){
 		        $this->Search['pn'] = $Data['pn'];
 		        $this->Search['num'] = $Data['num'];

@@ -13,19 +13,27 @@ class CWDMS_Controller extends CI_Controller
 	protected $Success = '';
 	protected $Failue = '';
 	protected $Location = '';
+
+	protected $Module;
+	protected $Controller;
+	protected $Item;
+	protected $Cookie;
 	public function __construct()
 	{
 		parent::__construct();
 		log_message('debug','Controller CWDMS_Controller/__construct Start');
-		/* 
-		if(!$this->auth->is_login() && !preg_match('/sign/', $_SERVER['REQUEST_URI'])){
-			gh_location('',base_url('/index.php/sign/index/in'));
-		} */
+		$this->_init();
+	}
+
+	private function _init() {
+		$this->Module = $this->router->directory;
+		$this->Controller = $this->router->class;
+		$this->Item = $this->Module.$this->Controller.'/';
+		$this->Cookie = str_replace('/', '_', $this->Item);
 		$this->_is_ajax();
 		$this->_is_app();
-		//$this->form_validation->set_error_delimiters('', '');
 	}
-	
+
 	private function _is_ajax(){
 	    $this->isAjax = isAjax();
 	}
@@ -137,5 +145,4 @@ class CWDMS_Controller extends CI_Controller
 	    }
 	    return $Return;
 	}
-	
 }//end Base_Controller

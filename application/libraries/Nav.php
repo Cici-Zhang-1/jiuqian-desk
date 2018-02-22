@@ -19,7 +19,7 @@ class Nav{
         $Uid = $this->_CI->session->userdata('uid');
         $Uid = intval(trim($Uid));
         if($Uid){
-            $this->_CI->load->model('priviledge/menu_model');
+            $this->_CI->load->model('permission/menu_model');
             if(!!($Menu = $this->_CI->menu_model->select_by_uid($Uid))){
                 return $this->_nav_format($Menu);
             }else{
