@@ -2,3 +2,5 @@
 /download/
 /upload/
 /.idea/
+/application/cache/
+/application/logs/
