@@ -31,6 +31,8 @@
 						    <li><a href="javascript:void(0);" data-toggle="child" data-target="#menuTable" data-action="<?php echo site_url('permission/card/index/read');?>" data-multiple=false><i class="fa fa-eye"></i>&nbsp;&nbsp;Card</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="javascript:void(0);" data-toggle="child" data-target="#menuTable" data-action="<?php echo site_url('permission/page_search/index/read');?>" data-multiple=false><i class="fa fa-eye"></i>&nbsp;&nbsp;页面搜索</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="javascript:void(0);" data-toggle="child" data-target="#menuTable" data-action="<?php echo site_url('permission/page_form/index/read');?>" data-multiple=false><i class="fa fa-eye"></i>&nbsp;&nbsp;页面表单</a></li>
 		    		</ul>
 		  		</div>
 	  			<button class="btn btn-primary" type="button" value="新增" data-toggle="modal" data-target="#menuModal" data-action="<?php echo site_url('permission/menu/add');?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增</button>
@@ -45,9 +47,13 @@
 						<th class="td-xs" data-name="selected">#</td>
 						<th class="td-xs" data-name="class">层级</th>
 						<th data-name="name">名称</th>
+						<th data-name="label">Label</th>
 						<th data-name="url">URI</th>
 						<th data-name="displayorder">显示顺序</th>
 						<th data-name="img">图像</th>
+						<th data-name="page_type">类型</th>
+						<th data-name="mobile">移动端</th>
+						<th data-name="invisible">隐形</th>
 						<th class="hide" data-name="parent">父级</th>
 					</tr>
 				</thead>
@@ -58,9 +64,13 @@
 			      		<td ><input name="mid"  type="checkbox" value=""/></td>
 						<td name="line"><input type="hidden" name="class" value="" /></td>
 						<td name="name"></td>
+						<td name="label"></td>
 						<td name="url"></td>
 						<td name="displayorder"></td>
 						<td name="img"></td>
+						<td name="page_type"></td>
+						<td name="mobile"></td>
+						<td name="invisible"></td>
 						<td class="hide" name="parent"></td>
 			      	</tr>
 				</tbody>
@@ -94,6 +104,12 @@
 			      				<input class="form-control" name="name" type="text" placeholder="名称" value=""/>
 			      			</div>
 			      		</div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Label:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="label" type="text" placeholder="Label" value=""/>
+                            </div>
+                        </div>
 			      		<div class="form-group">
 			      			<label class="control-label col-md-2">父级:</label>
 			      			<div class="col-md-6">
@@ -120,6 +136,36 @@
 			      				<input class="form-control" name="img" type="text" placeholder="图片" value=""/>
 			      			</div>
 			      		</div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">类型:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="page_type">
+                                    <option value="table">表格</option>
+                                    <option value="form">表单</option>
+                                    <option value="ul">UL列表</option>
+                                    <option value="dl">DL列表</option>
+                                    <option value="mix">混合</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">移动端:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="mobile">
+                                    <option value="0">否</option>
+                                    <option value="1">是</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">隐形:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="invisible">
+                                    <option value="0">否</option>
+                                    <option value="1">是</option>
+                                </select>
+                            </div>
+                        </div>
 			      		<div class="alert alert-danger alert-dismissible fade in serverError" role="alert"></div>
 			      	</div>
 			      	<div class="modal-footer">

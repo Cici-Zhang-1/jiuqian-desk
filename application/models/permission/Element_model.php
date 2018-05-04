@@ -50,7 +50,7 @@ class Element_model extends Base_Model{
             if ($Mid) {
                 $this->HostDb->join('card', 'c_id = e_card_id', 'left')->where('c_menu_id', $Mid);
             }
-            $Query = $this->HostDb->where("re_role_id in (SELECT ur_role_id FROM j_usergroup_role WHERE ur_usergroup_id = $Ugid)")->group_by('e_id')->get();
+            $Query = $this->HostDb->where("re_role_id in (SELECT ur_role_id FROM j_usergroup_role WHERE ur_usergroup_id = $Ugid)")->group_by('e_id')->order_by('e_displayorder')->get();
             if ($Query->num_rows() > 0) {
                 $Return = $Query->result_array();
                 $this->cache->save($Cache, $Return, MONTHS);
@@ -72,6 +72,7 @@ class Element_model extends Base_Model{
             $Sql = $this->_unformat_as($Item, $this->Module);
             $Query = $this->HostDb->select($Sql)->from('element')
                             ->where('e_card_id', $Cid)
+                            ->order_by('e_displayorder')
                             ->get();
             if($Query->num_rows() > 0){
                 $Return = $Query->result_array();

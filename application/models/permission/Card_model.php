@@ -64,7 +64,7 @@ class Card_model extends Base_Model{
      */
     public function select_by_mid($Mid){
         $Item = $this->Item.__FUNCTION__;
-        $Cache = $this->Cache.__FUNCTION__;
+        $Cache = $this->Cache . __FUNCTION__ . $Mid;
         $Return = false;
         if(!($Return = $this->cache->get($Cache))){
             $Sql = $this->_unformat_as($Item, $this->Module);

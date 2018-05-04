@@ -2534,6 +2534,11 @@ $config = array(
                 'rules' => 'trim|required|min_length[1]|max_length[64]'
             ),
             array(
+                'field' => 'label',
+                'label' => 'Label',
+                'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
                 'field' => 'url',
                 'label' => 'Url',
                 'rules' => 'trim|max_length[128]'
@@ -2541,12 +2546,12 @@ $config = array(
             array(
                 'field' => 'card_type',
                 'label' => '卡片类型',
-                'rules' => 'trim|required|min_length[1]|max_length[32]'
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[2]'
             ),
             array(
                 'field' => 'card_setting',
                 'label' => '设置方式',
-                'rules' => 'trim|max_length[32]'
+                'rules' => 'trim|numeric|max_length[2]'
             )
         ),
         'permission/card/edit' => array(
@@ -2561,6 +2566,11 @@ $config = array(
                 'rules' => 'trim|required|min_length[1]|max_length[64]'
             ),
             array(
+                'field' => 'label',
+                'label' => 'Label',
+                'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
                 'field' => 'url',
                 'label' => 'Url',
                 'rules' => 'trim|max_length[128]'
@@ -2568,12 +2578,12 @@ $config = array(
             array(
                 'field' => 'card_type',
                 'label' => '卡片类型',
-                'rules' => 'trim|required|min_length[1]|max_length[32]'
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[2]'
             ),
             array(
                 'field' => 'card_setting',
                 'label' => '设置方式',
-                'rules' => 'trim|max_length[32]'
+                'rules' => 'trim|numeric|max_length[2]'
             )
         ),
         'permission/card/remove' => array(
@@ -2598,6 +2608,21 @@ $config = array(
                 'field' => 'classes',
                 'label' => '样式',
                 'rules' => 'trim|max_length[64]'
+            ),
+            array(
+                'field' => 'dv',
+                'label' => '缺省值',
+                'rules' => 'trim|max_length[128]'
+            ),
+            array(
+                'field' => 'displayorder',
+                'label' => '显示顺序',
+                'rules' => 'trim|numeric|max_length[4]'
+            ),
+            array(
+                'field' => 'checked',
+                'label' => '默认',
+                'rules' => 'trim|numeric|max_length[1]'
             )
         ),
         'permission/element/edit' => array(
@@ -2620,6 +2645,21 @@ $config = array(
                 'field' => 'classes',
                 'label' => '样式',
                 'rules' => 'trim|max_length[64]'
+            ),
+            array(
+                'field' => 'dv',
+                'label' => '缺省值',
+                'rules' => 'trim|max_length[128]'
+            ),
+            array(
+                'field' => 'displayorder',
+                'label' => '显示顺序',
+                'rules' => 'trim|numeric|max_length[4]'
+            ),
+            array(
+                'field' => 'checked',
+                'label' => '默认',
+                'rules' => 'trim|numeric|max_length[1]'
             )
         ),
         'permission/element/remove' => array(
@@ -2634,6 +2674,76 @@ $config = array(
                 'field' => 'name',
                 'label' => '名称',
                 'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'label',
+                'label' => 'Label',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'form_type',
+                'label' => '类型',
+                'rules' => 'trim|numeric|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'url',
+                'label' => 'Url',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'dv',
+                'label' => '缺省值',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'placeholder',
+                'label' => 'Placeholder',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'classes',
+                'label' => '样式',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'readonly',
+                'label' => '只读',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'required',
+                'label' => '必存',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'multiple',
+                'label' => '多选',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'max',
+                'label' => '最大值',
+                'rules' => 'trim|min_length[1]|max_length[32]'
+            ),
+            array(
+                'field' => 'min',
+                'label' => '最小值',
+                'rules' => 'trim|min_length[1]|max_length[32]'
+            ),
+            array(
+                'field' => 'maxlength',
+                'label' => '最大长度',
+                'rules' => 'trim|numeric|min_length[1]|max_length[10]'
+            ),
+            array(
+                'field' => 'pattern',
+                'label' => '模式',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'ide',
+                'label' => 'ID',
+                'rules' => 'trim|min_length[1]|max_length[64]'
             ),
             array(
                 'field' => 'func_id',
@@ -2651,6 +2761,76 @@ $config = array(
                 'field' => 'name',
                 'label' => '名称',
                 'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'label',
+                'label' => 'Label',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'form_type',
+                'label' => '类型',
+                'rules' => 'trim|numeric|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'url',
+                'label' => 'Url',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'dv',
+                'label' => '缺省值',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'placeholder',
+                'label' => 'Placeholder',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'classes',
+                'label' => '样式',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'readonly',
+                'label' => '只读',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'required',
+                'label' => '必存',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'multiple',
+                'label' => '多选',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'max',
+                'label' => '最大值',
+                'rules' => 'trim|min_length[1]|max_length[32]'
+            ),
+            array(
+                'field' => 'min',
+                'label' => '最小值',
+                'rules' => 'trim|min_length[1]|max_length[32]'
+            ),
+            array(
+                'field' => 'maxlength',
+                'label' => '最大长度',
+                'rules' => 'trim|numeric|min_length[1]|max_length[10]'
+            ),
+            array(
+                'field' => 'pattern',
+                'label' => '模式',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'ide',
+                'label' => 'ID',
+                'rules' => 'trim|min_length[1]|max_length[64]'
             ),
             array(
                 'field' => 'func_id',
@@ -2672,60 +2852,8 @@ $config = array(
                 'rules' => 'trim|required|min_length[1]|max_length[64]'
             ),
             array(
-                'field' => 'mid',
-                'label' => '菜单',
-                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
-            ),
-            array(
-                'field' => 'url',
-                'label' => 'URL',
-                'rules' => 'trim|min_length[1]|max_length[256]'
-            ),
-            array(
-                'field' => 'displayorder',
-                'label' => '显示顺序',
-                'rules' => 'trim|numeric|min_length[0]|max_length[2]'
-            ),
-            array(
-                'field' => 'img',
-                'label' => '图像',
-                'rules' => 'trim|min_length[0]|max_length[128]'
-            ),
-            array(
-                'field' => 'group_no',
-                'label' => '组号',
-                'rules' => 'trim|max_length[32]'
-            ),
-            array(
-                'field' => 'toggle',
-                'label' => 'Toggle',
-                'rules' => 'trim|max_length[32]'
-            ),
-            array(
-                'field' => 'target',
-                'label' => 'Target',
-                'rules' => 'trim|max_length[32]'
-            ),
-            array(
-                'field' => 'tag',
-                'label' => 'Tag',
-                'rules' => 'trim|max_length[32]'
-            ),
-            array(
-                'field' => 'multiple',
-                'label' => '多选',
-                'rules' => 'trim|numeric|max_length[1]'
-            )
-        ),
-        'permission/func/edit' => array(
-            array(
-                'field' => 'selected',
-                'label' => '功能编号',
-                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
-            ),
-            array(
-                'field' => 'name',
-                'label' => '名称',
+                'field' => 'label',
+                'label' => 'Label',
                 'rules' => 'trim|required|min_length[1]|max_length[64]'
             ),
             array(
@@ -2756,7 +2884,7 @@ $config = array(
             array(
                 'field' => 'toggle',
                 'label' => 'Toggle',
-                'rules' => 'trim|max_length[32]'
+                'rules' => 'trim|numeric|max_length[2]'
             ),
             array(
                 'field' => 'target',
@@ -2766,12 +2894,94 @@ $config = array(
             array(
                 'field' => 'tag',
                 'label' => 'Tag',
-                'rules' => 'trim|max_length[32]'
+                'rules' => 'trim|numeric|max_length[4]'
             ),
             array(
                 'field' => 'multiple',
                 'label' => '多选',
                 'rules' => 'trim|numeric|max_length[1]'
+            ),
+            array(
+                'field' => 'source',
+                'label' => '数据源',
+                'rules' => 'trim|min_length[0]|max_length[64]'
+            ),
+            array(
+                'field' => 'modal_type',
+                'label' => 'modal类型',
+                'rules' => 'trim|numeric|min_length[0]|max_length[2]'
+            )
+        ),
+        'permission/func/edit' => array(
+            array(
+                'field' => 'selected',
+                'label' => '功能编号',
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'name',
+                'label' => '名称',
+                'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'label',
+                'label' => 'Label',
+                'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'mid',
+                'label' => '菜单',
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'url',
+                'label' => 'URL',
+                'rules' => 'trim|min_length[1]|max_length[256]'
+            ),
+            array(
+                'field' => 'displayorder',
+                'label' => '显示顺序',
+                'rules' => 'trim|numeric|min_length[0]|max_length[2]'
+            ),
+            array(
+                'field' => 'img',
+                'label' => '图像',
+                'rules' => 'trim|min_length[0]|max_length[128]'
+            ),
+            array(
+                'field' => 'group_no',
+                'label' => '组号',
+                'rules' => 'trim|max_length[32]'
+            ),
+            array(
+                'field' => 'toggle',
+                'label' => 'Toggle',
+                'rules' => 'trim|numeric|max_length[2]'
+            ),
+            array(
+                'field' => 'target',
+                'label' => 'Target',
+                'rules' => 'trim|max_length[32]'
+            ),
+            array(
+                'field' => 'tag',
+                'label' => 'Tag',
+                'rules' => 'trim|numeric|max_length[4]'
+            ),
+            array(
+                'field' => 'multiple',
+                'label' => '多选',
+                'rules' => 'trim|numeric|max_length[1]'
+            ),
+            array(
+                'field' => 'source',
+                'label' => '数据源',
+                'rules' => 'trim|min_length[0]|max_length[64]'
+            ),
+            array(
+                'field' => 'modal_type',
+                'label' => 'modal类型',
+                'rules' => 'trim|numeric|min_length[0]|max_length[2]'
             )
         ),
         'permission/func/remove' => array(
@@ -2788,6 +2998,11 @@ $config = array(
                 'rules' => 'trim|required|min_length[1]|max_length[128]'
             ),
             array(
+                'field' => 'label',
+                'label' => 'Label',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
                 'field' => 'parent',
                 'label' => '父级',
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
@@ -2800,12 +3015,27 @@ $config = array(
             array(
                 'field' => 'displayorder',
                 'label' => '显示顺序',
-                'rules' => 'trim|numeric|min_length[0]|max_length[2]'
+                'rules' => 'trim|numeric|min_length[0]|max_length[4]'
             ),
             array(
                 'field' => 'img',
                 'label' => '图像',
                 'rules' => 'trim|min_length[0]|max_length[128]'
+            ),
+            array(
+                'field' => 'type',
+                'label' => '类型',
+                'rules' => 'trim|min_length[0]|max_length[32]'
+            ),
+            array(
+                'field' => 'mobile',
+                'label' => '移动端显示',
+                'rules' => 'trim|numeric|min_length[0]|max_length[1]'
+            ),
+            array(
+                'field' => 'invisible',
+                'label' => '隐形',
+                'rules' => 'trim|numeric|min_length[0]|max_length[1]'
             )
         ),
         'permission/menu/edit' => array(
@@ -2820,6 +3050,11 @@ $config = array(
                 'rules' => 'trim|required|min_length[1]|max_length[128]'
             ),
             array(
+                'field' => 'label',
+                'label' => 'Label',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
                 'field' => 'parent',
                 'label' => '父级',
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
@@ -2832,18 +3067,209 @@ $config = array(
             array(
                 'field' => 'displayorder',
                 'label' => '显示顺序',
-                'rules' => 'trim|numeric|min_length[0]|max_length[2]'
+                'rules' => 'trim|numeric|min_length[0]|max_length[4]'
             ),
             array(
                 'field' => 'img',
                 'label' => '图像',
                 'rules' => 'trim|min_length[0]|max_length[128]|gh_str_replace'
+            ),
+            array(
+                'field' => 'type',
+                'label' => '类型',
+                'rules' => 'trim|min_length[0]|max_length[32]'
+            ),
+            array(
+                'field' => 'mobile',
+                'label' => '移动端显示',
+                'rules' => 'trim|numeric|min_length[0]|max_length[1]'
+            ),
+            array(
+                'field' => 'invisible',
+                'label' => '隐形',
+                'rules' => 'trim|numeric|min_length[0]|max_length[1]'
             )
         ),
         'permission/menu/remove' => array(
             array(
                 'field' => 'selected[]',
                 'label' => '菜单编号',
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
+            )
+        ),
+        'permission/page_form/add' => array(
+            array(
+                'field' => 'name',
+                'label' => '名称',
+                'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'label',
+                'label' => 'Label',
+                'rules' => 'trim|max_length[64]'
+            ),
+            array(
+                'field' => 'form_type',
+                'label' => '类型',
+                'rules' => 'trim|numeric|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'url',
+                'label' => 'URL',
+                'rules' => 'trim|max_length[128]'
+            ),
+            array(
+                'field' => 'dv',
+                'label' => '缺省值',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'placeholder',
+                'label' => 'Placeholder',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'classes',
+                'label' => '样式',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'readonly',
+                'label' => '只读',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'required',
+                'label' => '必存',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'multiple',
+                'label' => '多选',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'max',
+                'label' => '最大值',
+                'rules' => 'trim|min_length[1]|max_length[32]'
+            ),
+            array(
+                'field' => 'min',
+                'label' => '最小值',
+                'rules' => 'trim|min_length[1]|max_length[32]'
+            ),
+            array(
+                'field' => 'maxlength',
+                'label' => '最大长度',
+                'rules' => 'trim|numeric|min_length[1]|max_length[10]'
+            ),
+            array(
+                'field' => 'pattern',
+                'label' => '模式',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'ide',
+                'label' => 'ID',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'mid',
+                'label' => '菜单',
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
+            )
+        ),
+        'permission/page_form/edit' => array(
+            array(
+                'field' => 'selected',
+                'label' => '页面搜索编号',
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'mid',
+                'label' => '菜单',
+                'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'name',
+                'label' => '名称',
+                'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'form_type',
+                'label' => '类型',
+                'rules' => 'trim|numeric|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'url',
+                'label' => 'URL',
+                'rules' => 'trim|max_length[128]'
+            ),
+            array(
+                'field' => 'dv',
+                'label' => '缺省值',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'placeholder',
+                'label' => 'Placeholder',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'classes',
+                'label' => '样式',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'readonly',
+                'label' => '只读',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'required',
+                'label' => '必存',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'multiple',
+                'label' => '多选',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'max',
+                'label' => '最大值',
+                'rules' => 'trim|min_length[1]|max_length[32]'
+            ),
+            array(
+                'field' => 'min',
+                'label' => '最小值',
+                'rules' => 'trim|min_length[1]|max_length[32]'
+            ),
+            array(
+                'field' => 'maxlength',
+                'label' => '最大长度',
+                'rules' => 'trim|numeric|min_length[1]|max_length[10]'
+            ),
+            array(
+                'field' => 'pattern',
+                'label' => '模式',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'ide',
+                'label' => 'ID',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'label',
+                'label' => 'Label',
+                'rules' => 'trim|max_length[64]'
+            )
+        ),
+        'permission/page_form/remove' => array(
+            array(
+                'field' => 'selected[]',
+                'label' => '页面表单编号',
                 'rules' => 'trim|required|numeric|min_length[1]|max_length[4]'
             )
         ),
@@ -2857,6 +3283,76 @@ $config = array(
                 'field' => 'label',
                 'label' => 'Label',
                 'rules' => 'trim|max_length[64]'
+            ),
+            array(
+                'field' => 'form_type',
+                'label' => '表单类型',
+                'rules' => 'trim|numeric|max_length[4]'
+            ),
+            array(
+                'field' => 'type',
+                'label' => '类型',
+                'rules' => 'trim|numeric|max_length[4]'
+            ),
+            array(
+                'field' => 'url',
+                'label' => 'Url',
+                'rules' => 'trim|max_length[128]'
+            ),
+            array(
+                'field' => 'dv',
+                'label' => '缺省值',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'placeholder',
+                'label' => 'Placeholder',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'classes',
+                'label' => '样式',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'readonly',
+                'label' => '只读',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'required',
+                'label' => '必存',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'multiple',
+                'label' => '多选',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'max',
+                'label' => '最大值',
+                'rules' => 'trim|min_length[1]|max_length[32]'
+            ),
+            array(
+                'field' => 'min',
+                'label' => '最小值',
+                'rules' => 'trim|min_length[1]|max_length[32]'
+            ),
+            array(
+                'field' => 'maxlength',
+                'label' => '最大长度',
+                'rules' => 'trim|numeric|min_length[1]|max_length[10]'
+            ),
+            array(
+                'field' => 'pattern',
+                'label' => '模式',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'ide',
+                'label' => 'ID',
+                'rules' => 'trim|min_length[1]|max_length[64]'
             ),
             array(
                 'field' => 'mid',
@@ -2879,6 +3375,76 @@ $config = array(
                 'field' => 'name',
                 'label' => '名称',
                 'rules' => 'trim|required|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'form_type',
+                'label' => '表单类型',
+                'rules' => 'trim|numeric|max_length[4]'
+            ),
+            array(
+                'field' => 'type',
+                'label' => '类型',
+                'rules' => 'trim|numeric|max_length[4]'
+            ),
+            array(
+                'field' => 'url',
+                'label' => 'Url',
+                'rules' => 'trim|max_length[128]'
+            ),
+            array(
+                'field' => 'dv',
+                'label' => '缺省值',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'placeholder',
+                'label' => 'Placeholder',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'classes',
+                'label' => '样式',
+                'rules' => 'trim|min_length[1]|max_length[64]'
+            ),
+            array(
+                'field' => 'readonly',
+                'label' => '只读',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'required',
+                'label' => '必存',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'multiple',
+                'label' => '多选',
+                'rules' => 'trim|numeric|min_length[1]|max_length[1]'
+            ),
+            array(
+                'field' => 'max',
+                'label' => '最大值',
+                'rules' => 'trim|min_length[1]|max_length[32]'
+            ),
+            array(
+                'field' => 'min',
+                'label' => '最小值',
+                'rules' => 'trim|min_length[1]|max_length[32]'
+            ),
+            array(
+                'field' => 'maxlength',
+                'label' => '最大长度',
+                'rules' => 'trim|numeric|min_length[1]|max_length[10]'
+            ),
+            array(
+                'field' => 'pattern',
+                'label' => '模式',
+                'rules' => 'trim|min_length[1]|max_length[128]'
+            ),
+            array(
+                'field' => 'ide',
+                'label' => 'ID',
+                'rules' => 'trim|min_length[1]|max_length[64]'
             ),
             array(
                 'field' => 'label',
@@ -2976,6 +3542,18 @@ $config = array(
             array(
                 'field' => 'mid[]',
                 'label' => '菜单权限',
+                'rules' => 'trim|min_length[1]|max_length[4]'
+            )
+        ),
+        'permission/role_page_form/edit' => array(
+            array(
+                'field' => 'rid',
+                'label' => '角色',
+                'rules' => 'trim|required|min_length[1]|max_length[4]'
+            ),
+            array(
+                'field' => 'pfid[]',
+                'label' => '页面表单权限',
                 'rules' => 'trim|min_length[1]|max_length[4]'
             )
         ),

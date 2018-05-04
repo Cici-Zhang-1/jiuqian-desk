@@ -3,50 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><div class="page-line" id="order">
     <div class="my-tools col-md-12">
         <div class="col-md-3">
-            <div class="input-group" id="orderSearch" data-toggle="filter" data-target="#orderTable">
-    <span class="input-group-btn">
-        <button class="btn btn-default" type="button" data-toggle="modal" data-target="#orderFilterModal"><i class="fa fa-search"></i></button>
-    </span>
-    <input type="hidden" name="status" value=""/><input type="hidden" name="start_date" value="2018-02-01"/><input type="hidden" name="end_date" value=""/><input type="text" class="form-control" name="keyword" placeholder="订单编号/经销商/业主/备注">
-    <span class="input-group-btn">
-        <button class="btn btn-default" type="submit">Go!</button>
-    </span>
-</div>        </div>
+                    </div>
         <div class="col-md-offset-3 col-md-6 text-right" id="orderFunction">
-            <div class="btn-group" role="group">
-        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        共选中<span id="orderTableSelected" data-num="">0</span>项
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" role="menu" data-table="#orderTable"><li><a href="javascript:void(0);" data-toggle="modal" data-target="#orderModal" data-action="http://localhost/jiuqian-desk/index.php/order/order/edit" data-multiple=false><i class="fa fa-pencil"></i>&nbsp;&nbsp;编辑</a></li><li role="separator" class="divider"></li><li><a href="javascript:void(0);" data-toggle="child" data-target="#orderTable" data-action="http://localhost/jiuqian-desk/index.php/data/workflow_msg/index/read" data-multiple=false><i class="fa fa-hourglass-1"></i>&nbsp;&nbsp;进程图</a></li>    </ul>
-    <button class="btn btn-default" data-toggle="refresh" type="button" value="刷新"><i class="fa fa-refresh"></i>&nbsp;&nbsp;刷新</button><a class="btn btn-default" data-toggle="backstage" href="http://localhost/jiuqian-desk/index.php/order/order/remove" data-target="#orderTable" data-multiple=true><i class="fa fa-trash-o"></i>&nbsp;&nbsp;作废</a>
-</div>        </div>
+                    </div>
     </div>
     <div class="my-table col-md-12">
-        <table class="table table-bordered table-striped table-hover table-responsive table-condensed" id="orderTable" data-load="http://localhost/jiuqian-desk/index.php/order/order/read">
-    <thead>
-    <tr>
-        <th class="td-xs checkall" data-name="selected" data-checkall=false>#</th><th >等级</th><th >订单编号</th><th >客户</th><th data-name="owner">业主</th><th >金额</th><th >账户余额</th><th >创建人</th><th >状态</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="loading"><td colspan="15">加载中...</td></tr>
-    <tr class="no-data"><td colspan="15">没有数据</td></tr>
-    <tr class="model">
-        <td ><input name="oid"  type="checkbox" value=""/></td><td name="icon"></td><td name="order_num"><a href="http://localhost/jiuqian-desk/index.php/order/order_detail/index/read/order" title="订单详情" data-toggle="floatover" data-target="#orderFloatover" data-remote="http://localhost/jiuqian-desk/index.php/order/order_detail/index/read_floatover"></a></td><td name="dealer"><a href="http://localhost/jiuqian-desk/index.php/dealer/dealer_debt/index/read" data-toggle="blank" target="_blank"></a></td><td name="owner"></td><td name="sum"></td><td name="balance"></td><td name="creator"></td><td name="status"></td>
-    </tr>
-    </tbody>
-</table>
-<div class="hide btn-group pull-right paging">
-    <p class="footnote"></p>
-    <ul class="pagination">
-        <li><a href="1">首页</a></li>
-        <li class=""><a href="javascript:void(0);" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-        <li><a href=""></a></li>
-        <li class=""><a href="" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-        <li><a href="">尾页</a></li>
-    </ul>
-</div>    </div>
+            </div>
     <div class="floatover hide" id="orderFloatover"></div>
 </div>
 

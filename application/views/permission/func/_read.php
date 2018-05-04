@@ -41,6 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<tr>
 						<th class="td-xs" data-name="selected">#</td>
 						<th data-name="name">名称</th>
+						<th data-name="label">Label</th>
 						<th data-name="url">Url</th>
 						<th data-name="displayorder">显示顺序</th>
 						<th data-name="img">图像</th>
@@ -49,6 +50,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<th data-name="target">Target</th>
 						<th data-name="tag">Tag</th>
 						<th data-name="multiple">多选</th>
+						<th data-name="source">数据源</th>
+						<th data-name="modal_type">modal类型</th>
 						<th class="hide" data-name="mid">Menu</th>
 					</tr>
 				</thead>
@@ -65,6 +68,7 @@ END;
 <tr>
 	<td><input name="fid"  type="checkbox" value="$value[fid]"/></td>
 	<td name="name">$value[name]</td>
+	<td name="label">$value[label]</td>
 	<td name="url">$value[url]</td>
 	<td name="displayorder">$value[displayorder]</td>
 	<td name="img">$value[img]</td>
@@ -73,6 +77,8 @@ END;
 	<td name="target">$value[target]</td>
 	<td name="tag">$value[tag]</td>
 	<td name="multiple">$value[multiple]</td>
+	<td name="source">$value[source]</td>
+	<td name="modal_type">$value[modal_type]</td>
 	<td class="hide" name="mid">$value[mid]</td>
 </tr>
 END;
@@ -101,6 +107,12 @@ END;
 								<input class="form-control" name="name" type="text" placeholder="名称" value=""/>
 							</div>
 						</div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Label:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="label" type="text" placeholder="Label" value=""/>
+                            </div>
+                        </div>
 						<div class="form-group">
 							<label class="control-label col-md-2">URL:</label>
 							<div class="col-md-6">
@@ -129,11 +141,11 @@ END;
 							<label class="control-label col-md-2">Toggle</label>
 							<div class="col-md-6">
 								<select class="form-control" name="toggle">
-									<option value="">---</option>
-									<option value="modal">Modal</option>
-									<option value="backstage">Backstage</option>
-									<option value="refresh">Refresh</option>
-									<option value="reply">Reply</option>
+									<option value="1">---</option>
+									<option value="2">Modal</option>
+									<option value="4">Backstage</option>
+									<option value="3">Child</option>
+									<option value="5">Refresh</option>
 								</select>
 							</div>
 						</div>
@@ -147,8 +159,9 @@ END;
 							<label class="control-label col-md-2">Tag</label>
 							<div class="col-md-6">
 								<select class="form-control" name="tag">
-									<option value="button">BUTTON</option>
-									<option value="a">A</option>
+									<option value="1">---</option>
+									<option value="2">BUTTON</option>
+									<option value="3">A</option>
 								</select>
 							</div>
 						</div>
@@ -156,11 +169,28 @@ END;
 							<label class="control-label col-md-2">多选</label>
 							<div class="col-md-6">
 								<select class="form-control" name="multiple">
-									<option value="0">FALSE</option>
+									<option value="2">FALSE</option>
 									<option value="1">TRUE</option>
 								</select>
 							</div>
 						</div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">数据原</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="source" type="text" placeholder="数据源" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">modal类型</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="modal_type">
+                                    <option value="1">---</option>
+                                    <option value="2">Ajax</option>
+                                    <option value="3">过滤</option>
+                                    <option value="4">搜索</option>
+                                </select>
+                            </div>
+                        </div>
 						<div class="alert alert-danger alert-dismissible fade in serverError" role="alert"></div>
 					</div>
 					<div class="modal-footer">

@@ -41,6 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<tr>
 						<th class="td-xs" data-name="selected">#</td>
 						<th data-name="name">名称</th>
+						<th data-name="label">Label</th>
 						<th data-name="url">Url</th>
 						<th data-name="card_type">卡片类型</th>
 						<th data-name="card_setting">设置方式</th>
@@ -60,6 +61,7 @@ END;
 <tr>
 	<td><input name="cid"  type="checkbox" value="$value[cid]"/></td>
 	<td name="name">$value[name]</td>
+	<td name="label">$value[label]</td>
 	<td name="url">$value[url]</td>
 	<td name="card_type">$value[card_type]</td>
 	<td name="card_setting">$value[card_setting]</td>
@@ -92,6 +94,12 @@ END;
 							</div>
 						</div>
                         <div class="form-group">
+                            <label class="control-label col-md-2">Label:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="label" type="text" placeholder="Label" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-md-2">Url:</label>
                             <div class="col-md-6">
                                 <input class="form-control" name="url" type="text" placeholder="Url" value=""/>
@@ -101,8 +109,9 @@ END;
 							<label class="control-label col-md-2">卡片类型</label>
 							<div class="col-md-6">
 								<select class="form-control" name="card_type">
-									<option value="table">Table</option>
-									<option value="list">List</option>
+									<option value="3">Table</option>
+									<option value="2">List</option>
+									<option value="1">form</option>
 								</select>
 							</div>
 						</div>
@@ -110,7 +119,7 @@ END;
 							<label class="control-label col-md-2">设置方式</label>
 							<div class="col-md-6">
 								<select class="form-control" name="card_setting">
-									<option value="checkbox">CHECKBOX</option>
+									<option value="1">CHECKBOX</option>
 								</select>
 							</div>
 						</div>

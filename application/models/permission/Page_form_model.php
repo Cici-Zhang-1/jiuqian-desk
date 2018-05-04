@@ -8,10 +8,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * Desc:
  */
-class Form_model extends Base_Model{
+class Page_form_model extends Base_Model{
     public function __construct(){
         parent::__construct(__DIR__, __CLASS__);
-        log_message('debug', 'Model permission/Form_model Start!');
+        log_message('debug', 'Model permission/Page_form_model Start!');
     }
 
     public function select() {
@@ -20,12 +20,10 @@ class Form_model extends Base_Model{
         $Return = false;
         if (!($Return = $this->cache->get($Cache))) {
             $Sql = $this->_unformat_as($Item, $this->Module);
-            $Query = $this->HostDb->select($Sql)->from('form AS A ')
-                ->join('j_func AS B', 'B.f_id = A.f_func_id', 'left', false)
-                ->join('menu', 'm_id = B.f_menu_id', 'left')
-                ->order_by('m_displayorder')
-                ->order_by('B.f_displayorder')
-                ->get();
+            $Query = $this->HostDb->select($Sql)->from('page_form')
+                            ->join('menu', 'm_id = pf_menu_id', 'left')
+                            ->order_by('m_displayorder')
+                        ->get();
             if ($Query->num_rows() > 0) {
                 $Return = $Query->result_array();
                 $this->cache->save($Cache, $Return, MONTHS);
@@ -40,12 +38,12 @@ class Form_model extends Base_Model{
         $Return = false;
         if(!($Return = $this->cache->get($Cache))){
             $Sql = $this->_unformat_as($Item, $this->Module);
-            $this->HostDb->select($Sql)->from('role_form')
-                ->join('form AS A', 'A.f_id = rf_form_id', 'left');
+            $this->HostDb->select($Sql)->from('role_page_form')
+                    ->join('page_form', 'pf_id = rpf_page_form_id');
             if ($Mid) {
-                $this->HostDb->join('func as B', 'B.f_id = A.f_func_id', 'left')->where('B.f_menu_id', $Mid);
+                $this->HostDb->where('pf_menu_id', $Mid);
             }
-            $Query = $this->HostDb->where("rf_role_id in (SELECT ur_role_id FROM j_usergroup_role WHERE ur_usergroup_id = $Ugid)")->group_by('A.f_id')->get();
+            $Query = $this->HostDb->where("rpf_role_id in (SELECT ur_role_id FROM j_usergroup_role WHERE ur_usergroup_id = $Ugid)")->group_by('pf_id')->get();
             if ($Query->num_rows() > 0) {
                 $Return = $Query->result_array();
                 $this->cache->save($Cache, $Return, MONTHS);
@@ -58,14 +56,14 @@ class Form_model extends Base_Model{
      * @param $Uid
      * @return bool
      */
-    public function select_by_fid($Fid){
-        $Item = $this->Item . __FUNCTION__;
-        $Cache = $this->Cache . __FUNCTION__ . $Fid;
+    public function select_by_mid($Mid){
+        $Item = $this->Item.__FUNCTION__;
+        $Cache = $this->Cache.__FUNCTION__;
         $Return = false;
         if(!($Return = $this->cache->get($Cache))){
             $Sql = $this->_unformat_as($Item, $this->Module);
-            $Query = $this->HostDb->select($Sql)->from('form')
-                ->where('f_func_id', $Fid)
+            $Query = $this->HostDb->select($Sql)->from('page_form')
+                ->where('pf_menu_id', $Mid)
                 ->get();
             if($Query->num_rows() > 0){
                 $Return = $Query->result_array();
@@ -79,12 +77,12 @@ class Form_model extends Base_Model{
         $Item = $this->Item.__FUNCTION__;
         $Data = $this->_format($Data, $Item, $this->Module);
 
-        if($this->HostDb->insert('form', $Data)){
-            log_message('debug', "Model Form_model/insert Success!");
+        if($this->HostDb->insert('page_form', $Data)){
+            log_message('debug', "Model Page_form_model/insert Success!");
             $this->remove_cache($this->Module);
             return $this->HostDb->insert_id();
         }else{
-            log_message('debug', "Model Form_model/insert Error");
+            log_message('debug', "Model Page_form_model/insert Error");
             return false;
         }
     }
@@ -98,8 +96,8 @@ class Form_model extends Base_Model{
         $Item = $this->Item.__FUNCTION__;
         $Data = $this->_format_re($Data, $Item, $this->Module);
 
-        $this->HostDb->where('f_id', $Where);
-        $this->HostDb->update('form', $Data);
+        $this->HostDb->where('pf_id', $Where);
+        $this->HostDb->update('page_form', $Data);
         $this->remove_cache($this->Module);
         return TRUE;
     }
@@ -111,51 +109,48 @@ class Form_model extends Base_Model{
      * @return bool
      */
     public function delete($Where) {
-
         if(is_array($Where)){
-            $this->HostDb->where_in('f_id', $Where);
+            $this->HostDb->where_in('pf_id', $Where);
         }else{
-            $this->HostDb->where('f_id', $Where);
+            $this->HostDb->where('pf_id', $Where);
         }
 
-        $this->HostDb->delete('form');
+        $this->HostDb->delete('page_form');
         $this->remove_cache($this->Module);
         return true;
     }
 
     /**
-     * 通过FuncId删除时清理冗余信息
+     * 删除菜单时，需要删除包含的功能
      * @param $Where
-     * @return bool
      */
-    public function delete_by_func_id($Where) {
+    public function delete_by_mid($Where) {
         if (is_array($Where)) {
-            $Query = $this->HostDb->select('f_id')->from('form')
-                            ->where_in('f_func_id', $Where)->get();
+            $Query = $this->HostDb->select('pf_id')->from('page_form')
+                            ->where_in('pf_menu_id', $Where)->get();
         }else {
-            $Query = $this->HostDb->select('f_id')->from('form')
-                            ->where('f_func_id', $Where)->get();
+            $Query = $this->HostDb->select('pf_id')->from('page_form')
+                            ->where('pf_menu_id', $Where)->get();
         }
         if ($Query->num_rows() > 0) {
-            $Fids = $Query->result_array();
+            $Psids = $Query->result_array();
             $Query->free_result();
         }else {
-            $Fids = false;
+            $Psids = false;
         }
         if(is_array($Where)){
-            $this->HostDb->where_in('f_func_id', $Where);
+            $this->HostDb->where_in('pf_menu_id', $Where);
         }else{
-            $this->HostDb->where('f_func_id', $Where);
+            $this->HostDb->where('pf_menu_id', $Where);
         }
 
-        $this->HostDb->delete('form');
-        if ($Fids) {
-            foreach ($Fids as $key => $value) {
-                $Fids[$key] = $value['f_id'];
+        $this->HostDb->delete('func');
+        if ($Psids) {
+            foreach ($Psids as $key => $value) {
+                $Psids[$key] = $value['pf_id'];
             }
-            $this->load->model('permission/role_form_model');
-            $this->load->model('permission/form_model');
-            return $this->role_form_model->delete_by_fid($Fids);
+            $this->load->model('permission/role_page_form_model');
+            return $this->role_page_form_model->delete_by_psid($Psids);
         }else {
             return true;
         }

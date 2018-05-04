@@ -42,6 +42,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<th class="td-xs" data-name="selected">#</td>
 						<th data-name="name">名称</th>
 						<th data-name="label">标签</th>
+						<th data-name="form_type">表单类型</th>
+						<th data-name="type">类型</th>
+						<th data-name="url">Url</th>
+                        <th data-name="dv">默认值</th>
+                        <th data-name="placeholder">Placeholder</th>
+                        <th data-name="classes">样式</th>
+                        <th data-name="readonly">只读</th>
+                        <th data-name="required">必存</th>
+                        <th data-name="multiple">多选</th>
+                        <th data-name="max">最大值</th>
+                        <th data-name="min">最小值</th>
+                        <th data-name="maxlength">最长</th>
+                        <th data-name="pattern">模式</th>
+                        <th data-name="ide">ID</th>
 						<th class="hide" data-name="mid">Menu</th>
 					</tr>
 				</thead>
@@ -59,6 +73,20 @@ END;
 	<td><input name="psid"  type="checkbox" value="$value[psid]"/></td>
 	<td name="name">$value[name]</td>
 	<td name="label">$value[label]</td>
+	<td name="form_type">$value[form_type]</td>
+	<td name="type">$value[type]</td>
+	<td name="url">$value[url]</td>
+	<td name="dv">$value[dv]</td>
+	<td name="placeholder">$value[placeholder]</td>
+	<td name="classes">$value[classes]</td>
+	<td name="readonly">$value[readonly]</td>
+	<td name="required">$value[required]</td>
+	<td name="multiple">$value[multiple]</td>
+	<td name="max">$value[max]</td>
+	<td name="min">$value[min]</td>
+	<td name="maxlength">$value[maxlength]</td>
+	<td name="pattern">$value[pattern]</td>
+	<td name="ide">$value[ide]</td>
 	<td class="hide" name="mid">$value[mid]</td>
 </tr>
 END;
@@ -87,12 +115,151 @@ END;
 								<input class="form-control" name="name" type="text" placeholder="名称" value=""/>
 							</div>
 						</div>
-            <div class="form-group">
-              <label class="control-label col-md-2">Label:</label>
-              <div class="col-md-6">
-                <input class="form-control" name="label" type="text" placeholder="Label" value=""/>
-              </div>
-            </div>
+                        <div class="form-group">
+                          <label class="control-label col-md-2">Label:</label>
+                          <div class="col-md-6">
+                            <input class="form-control" name="label" type="text" placeholder="Label" value=""/>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">表单类型:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="form_type">
+                                    <option value="1">TEXT</option>
+                                    <option value="2">HIDDEN</option>
+                                    <option value="3">COLOR</option>
+                                    <option value="4">DATE</option>
+                                    <option value="5">DATETIME</option>
+                                    <option value="6">DATETIME-LOCAL</option>
+                                    <option value="7">EMAIL</option>
+                                    <option value="8">FILE</option>
+                                    <option value="9">IMAGE</option>
+                                    <option value="10">MONTH</option>
+                                    <option value="11">NUMBER</option>
+                                    <option value="12">PASSWORD</option>
+                                    <option value="13">RANGE</option>
+                                    <option value="14">SEARCH</option>
+                                    <option value="15">TEL</option>
+                                    <option value="16">TIME</option>
+                                    <option value="17">URL</option>
+                                    <option value="18">WEEK</option>
+                                    <option value="19">SELECT</option>
+                                    <option value="20">RADIO</option>
+                                    <option value="21">CHECKBOX</option>
+                                    <option value="22">TEXTAREA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">类型:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="type">
+                                    <option value="1">TEXT</option>
+                                    <option value="2">HIDDEN</option>
+                                    <option value="3">COLOR</option>
+                                    <option value="4">DATE</option>
+                                    <option value="5">DATETIME</option>
+                                    <option value="6">DATETIME-LOCAL</option>
+                                    <option value="7">EMAIL</option>
+                                    <option value="8">FILE</option>
+                                    <option value="9">IMAGE</option>
+                                    <option value="10">MONTH</option>
+                                    <option value="11">NUMBER</option>
+                                    <option value="12">PASSWORD</option>
+                                    <option value="13">RANGE</option>
+                                    <option value="14">SEARCH</option>
+                                    <option value="15">TEL</option>
+                                    <option value="16">TIME</option>
+                                    <option value="17">URL</option>
+                                    <option value="18">WEEK</option>
+                                    <option value="19">SELECT</option>
+                                    <option value="20">RADIO</option>
+                                    <option value="21">CHECKBOX</option>
+                                    <option value="22">TEXTAREA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Url:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="url" type="text" placeholder="Url" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">默认值:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="dv" type="text" placeholder="默认值" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Placeholder:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="placeholder" type="text" placeholder="Placeholder" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">样式:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="classes" type="text" placeholder="样式" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">只读:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="readonly">
+                                    <option value="2">否</option>
+                                    <option value="1">是</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">必存:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="required">
+                                    <option value="2">否</option>
+                                    <option value="1">是</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">多选:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="multiple">
+                                    <option value="2">否</option>
+                                    <option value="1">是</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">最大值:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="max" type="text" placeholder="最大值" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">最小值:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="min" type="text" placeholder="最小值" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">最长值:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="maxlength" type="text" placeholder="最长值" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">模式:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="pattern" type="text" placeholder="模式" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">ID:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="ide" type="text" placeholder="ID" value=""/>
+                            </div>
+                        </div>
 						<div class="alert alert-danger alert-dismissible fade in serverError" role="alert"></div>
 					</div>
 					<div class="modal-footer">

@@ -65,6 +65,7 @@ class Permit{
                 $this->_Operation = $this->_Operation . '/' . '_read';
             }
         }
+        $this->_Operation = '/' . $this->_Operation;
         $GLOBALS['Permission']['Operation'] = $this->_Operation;
         return true;
     }

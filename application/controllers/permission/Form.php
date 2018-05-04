@@ -58,6 +58,12 @@ class Form extends CWDMS_Controller {
         $Item = $this->_Item.__FUNCTION__;
         if ($this->form_validation->run($Item)) {
             $Post = gh_escape($_POST);
+            if (empty($Post['placeholder']) || $Post['placeholder'] == '') {
+                $Post['placeholder'] = $Post['label'];
+            }
+            if (empty($Post['ide']) || $Post['ide'] == '') {
+                $Post['ide'] = name_to_id($Post['name']);
+            }
             if(!!($Fid = $this->form_model->insert($Post))){
                 $this->load->model('permission/role_form_model');
                 $this->role_form_model->insert(array('rid' => SUPER_NO, 'fid' => $Fid)); // 新建表单都是关联超级管理员

@@ -43,6 +43,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<th data-name="name">名称</th>
 						<th data-name="label">标签</th>
 						<th data-name="classes">样式</th>
+						<th data-name="displayorder">显示顺序</th>
+						<th data-name="dv">缺省值</th>
+						<th data-name="checked">默认</th>
 						<th class="hide" data-name="cid">cid</th>
 					</tr>
 				</thead>
@@ -61,6 +64,9 @@ END;
 	<td name="name">$value[name]</td>
 	<td name="label">$value[label]</td>
 	<td name="classes">$value[classes]</td>
+	<td name="displayorder">$value[displayorder]</td>
+	<td name="dv">$value[dv]</td>
+	<td name="checked">$value[checked]</td>
 	<td class="hide" name="cid">$value[cid]</td>
 </tr>
 END;
@@ -101,6 +107,27 @@ END;
 								<input class="form-control" name="classes" type="text" placeholder="样式" value=""/>
 							</div>
 						</div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">缺省值:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="dv" type="text" placeholder="缺省值" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">显示顺序:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" name="displayorder" type="text" placeholder="显示顺序" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">默认:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="checked">
+                                    <option value="1">显示</option>
+                                    <option value="2">隐藏</option>
+                                </select>
+                            </div>
+                        </div>
 						<div class="alert alert-danger alert-dismissible fade in serverError" role="alert"></div>
 					</div>
 					<div class="modal-footer">
